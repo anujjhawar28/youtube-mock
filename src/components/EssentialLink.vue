@@ -1,5 +1,5 @@
 <template>
-  <q-item clickable :href="props.link">
+  <q-item clickable :href="props.link" @mouseover="hover" @mouseout="blur">
     <q-item-section v-if="props.icon" avatar>
       <q-icon :name="props.icon" />
     </q-item-section>
@@ -15,6 +15,8 @@
 defineOptions({
   name: "EssentialLink",
 });
+
+const emit = defineEmits(["hover", "blur"]);
 
 const props = defineProps({
   title: {
@@ -37,4 +39,11 @@ const props = defineProps({
     default: "",
   },
 });
+
+const hover = () => {
+  emit("hover");
+};
+const blur = () => {
+  emit("blur");
+};
 </script>

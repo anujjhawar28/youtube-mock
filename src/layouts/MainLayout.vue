@@ -97,12 +97,14 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above side="left">
+    <q-drawer v-model="leftDrawerOpen" :mini="mini" show-if-above side="left">
       <q-list>
         <EssentialLink
           v-for="link in linksList"
           :key="link.title"
           v-bind="link"
+          @hover="onHover"
+          @blur="onBlur"
         />
       </q-list>
     </q-drawer>
@@ -149,6 +151,14 @@ function toggleLeftDrawer() {
 const searchQuery = ref();
 function search(value) {
   searchQuery.value = "";
+}
+
+const mini = ref(true);
+function onHover() {
+  mini.value = false;
+}
+function onBlur() {
+  mini.value = true;
 }
 </script>
 
