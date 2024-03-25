@@ -3,7 +3,7 @@
     <div class="row">
       <q-card
         flat
-        class="card col-sm-4 col-lg-3"
+        class="card col-sm-12 col-lg-3"
         v-for="(card, index) in cards"
         :key="index"
       >
@@ -88,12 +88,18 @@ const cards = ref([
 </script>
 
 <style scoped>
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) {
+  .card {
+    width: 100% !important;
+  }
+}
 .card {
   width: calc(25% - 20px);
   border-radius: 5px;
   height: 300px;
-  margin-right: 20px; /* Add space between cards horizontally */
-  margin-bottom: 20px; /* Add space between cards vertically */
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
 }
 
 .card-image {

@@ -1,10 +1,7 @@
 <template>
   <q-layout view="hHh Lpr lff">
     <q-header class="bg-white">
-      <q-toolbar
-        style="margin-top: -10px"
-        class="row justify-between items-center"
-      >
+      <q-toolbar style="margin-top: -10px" class="flex items-center">
         <q-btn
           flat
           dense
@@ -15,88 +12,87 @@
           size="18px"
           @click="toggleLeftDrawer"
         />
+        <img
+          alt="Youtube Logo"
+          src="~assets/youtube.jpg"
+          width="100px"
+          height="70px"
+          class="hide-mobile"
+        />
 
-        <div
-          class="full-width row wrap justify-start items-center content-start q-pb-none col-12 col-sm-6 col-md-8"
-        >
-          <div class="col-2 hide-mobile">
-            <img
-              alt="Youtube Logo"
-              src="~assets/youtube.jpg"
-              width="100px"
-              height="70px"
-            />
+        <div class="full-width row">
+          <div class="col-lg-3 col-xs-1" />
+          <div class="col">
+            <div class="flex items-center q-my-md">
+              <q-input
+                style="width: 80%"
+                outlined
+                v-model="searchQuery"
+                dense
+                placeholder="Search..."
+                rounded
+              >
+                <template v-slot:append>
+                  <q-icon name="keyboard" class="q-mr-xs hide-mobile" />
+                  <q-btn
+                    icon="search"
+                    class="q-px-md"
+                    @click="search"
+                    round
+                    dense
+                  />
+                </template>
+              </q-input>
+              <q-icon
+                name="mic"
+                color="grey-7"
+                size="25px"
+                class="q-ml-sm cursor-pointer hide-mobile"
+              />
+            </div>
           </div>
-
-          <q-space />
-          <div class="col-5">
-            <q-input
-              outlined
-              v-model="searchQuery"
-              dense
-              placeholder="Search..."
-              rounded
-            >
-              <template v-slot:append>
-                <q-icon name="keyboard" class="q-mr-xs" />
-                <q-btn
-                  icon="search"
-                  class="q-px-md"
-                  @click="search"
-                  round
-                  dense
+          <div class="col-3 q-my-md hide-mobile">
+            <div class="flex items-center justify-end">
+              <div class="text-white rounded-borders cursor-pointer">
+                <q-icon
+                  name="more_vert"
+                  class="vertical-dots"
+                  color="grey-7"
+                  size="25px"
                 />
-              </template>
-            </q-input>
-          </div>
-          <q-icon
-            name="mic"
-            color="grey-7"
-            size="25px"
-            class="q-ml-sm cursor-pointer"
-          />
-          <q-space />
-
-          <div
-            class="text-white rounded-borders row flex-center cursor-pointer"
-          >
-            <q-icon
-              name="more_vert"
-              class="vertical-dots"
-              color="grey-7"
-              size="25px"
-            />
-            <q-menu>
-              <q-list>
-                <q-item clickable v-close-popup>
-                  <q-item-section>Option 1</q-item-section>
-                </q-item>
-                <q-item clickable v-close-popup>
-                  <q-item-section>Option 2</q-item-section>
-                </q-item>
-                <q-item clickable v-close-popup>
-                  <q-item-section>Option 3</q-item-section>
-                </q-item>
-              </q-list>
-            </q-menu>
-          </div>
-
-          <div>
-            <q-btn outline rounded color="primary">
-              <div>
-                <q-icon name="account_circle" />
-                <span>Profile</span>
+                <q-menu>
+                  <q-list>
+                    <q-item clickable v-close-popup>
+                      <q-item-section>Option 1</q-item-section>
+                    </q-item>
+                    <q-item clickable v-close-popup>
+                      <q-item-section>Option 2</q-item-section>
+                    </q-item>
+                    <q-item clickable v-close-popup>
+                      <q-item-section>Option 3</q-item-section>
+                    </q-item>
+                  </q-list>
+                </q-menu>
               </div>
-            </q-btn>
-          </div>
 
-          <q-icon
-            name="invert_colors"
-            inverted
-            color="grey-7"
-            size="25px"
-            class="q-ml-sm cursor-pointer"
-          />
+              <div>
+                <q-btn outline rounded color="primary">
+                  <div>
+                    <q-icon name="account_circle" />
+                    <span>Profile</span>
+                  </div>
+                </q-btn>
+              </div>
+
+              <q-icon
+                name="invert_colors"
+                inverted
+                color="grey-7"
+                size="25px"
+                class="q-ml-sm cursor-pointer"
+              />
+            </div>
+          </div>
         </div>
       </q-toolbar>
     </q-header>
@@ -155,3 +151,11 @@ function search(value) {
   searchQuery.value = "";
 }
 </script>
+
+<style scoped>
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) {
+  .hide-mobile {
+    display: none;
+  }
+}
+</style>
